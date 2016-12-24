@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Game.Interfaces;
 using System.Windows.Controls;
+using Game.Views.Default;
 
 namespace Game.Presenters
 {
@@ -20,10 +21,12 @@ namespace Game.Presenters
         }
 
 
+        private LinkedList<Func<object, bool>> _messageListeners;
         private IMainView _mainView = null;
         
         public MainPresenter( ) {
             _instance = this;
+            _messageListeners = new LinkedList<Func<object, bool>>();
         }
         
         public void SetupView( IMainView view ) {
@@ -31,19 +34,27 @@ namespace Game.Presenters
 
             view.RegisterMainMenuItem("Новая игра", ( ) => { }, new Dictionary<string, Action>
             {
-                ["ПРотив ПК"] = () => StartGameAgainstPC(),
+                ["Против ПК"] = () => StartGameAgainstPC(),
                 ["Сам с собой"] = () => StartSingleGame(),
                 ["Удаленно"] = () => StartRemoteGame(),
             });
             view.RegisterMainMenuItem("Текущая", ( ) => { }, new Dictionary<string, Action> {
                 //["Сделать ход"]
-            });                
+            });
+            view.HideChat();
+            view.OnChatMessage = ChatMessageRecived;
+
+            view.SetDefaultView(new MainScreen());
         }
 
         private void StartRemoteGame( )
         {
 
             
+        }
+
+        public void AddMessageListener( Func<object, bool> message ) {
+            _messageListeners.AddLast(message);
         }
 
         private void StartSingleGame( )
@@ -65,11 +76,32 @@ namespace Game.Presenters
         }
 
 
+        public void ShowInfo( object info ) {
+            _mainView.ShowMessage(info as string);
+        }
+
+        public void ShowError( object error ) {
+            _mainView.ShowError(error as string);
+        }
+
+        private bool ChatMessageRecived(object message ) {
+            bool norm = true;
+            foreach(var listeners in _messageListeners) {
+                if(!listeners?.Invoke(message) ?? true)
+                    norm = false;
+            }
+            return norm;
+        }
 
         public bool QueryForSetupView( UserControl control ) {
             _mainView.SetupView(control);
             return true;
         }
+
+        public void AddChatMessage( object message ) => _mainView.AddMessageToChat(message);
+        public void ClearChat( ) => _mainView.ClearChat();
+        public void HideChat( ) => _mainView.HideChat();
+        public void ShowChat( ) => _mainView.ShowChat();
     }
 }
  

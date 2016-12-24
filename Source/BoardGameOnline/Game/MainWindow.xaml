@@ -6,12 +6,51 @@
         xmlns:local="clr-namespace:Game"
         mc:Ignorable="d"
         xmlns:md="http://materialdesigninxaml.net/winfx/xaml/themes"
-        Title="MainWindow" Height="350" Width="525">
+        Title="MainWindow" Height="600" Width="800">
     <DockPanel>
         <Menu DockPanel.Dock="Top" Name="mainMenu">
         </Menu>
-        <Grid Name="Field" DockPanel.Dock="Bottom">
-            
+        <Grid  DockPanel.Dock="Bottom">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="3*"/>
+                <ColumnDefinition Name="chatColumn" Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Grid Name="Field" Grid.Column="0">
+                
+            </Grid>
+            <Grid Grid.Column="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="9*"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+                <Grid Grid.Row="0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="3*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <TextBlock Name="chatTitleText"/>
+                    
+                </Grid>
+                
+
+                <Grid Grid.Row="1">
+                    
+                </Grid>
+                
+                <Grid Grid.Row="2" Margin="0 0 0 3">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="2*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBox Grid.Column="0" Name="chatTextBox" FontSize="30"></TextBox>
+                    <Button Grid.Column="1" Name="chatSendButton" >
+                        <md:PackIcon Kind="Send"/>
+                    </Button>
+                </Grid>
+            </Grid>
         </Grid>
     </DockPanel>
 </Window>

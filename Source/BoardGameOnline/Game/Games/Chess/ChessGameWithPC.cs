@@ -6,7 +6,67 @@ using System.Threading.Tasks;
 
 namespace Game.Games.Chess
 {
-    public class ChessGameWithPC 
+    public class ChessGameWithPC : IGame
     {
+        public bool HaveChat
+        {
+            get
+            {
+                return true;
+            }
+            set { throw new NotImplementedException(); }
+        }
+
+        
+
+        public List<object> CheckData( object data )
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<object> CheckMessages( )
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Close( )
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<object> MakeMove( object moveData )
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<bool> Open( )
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<bool> Pause( )
+        {
+            throw new NotImplementedException();
+        }
+
+        public object ProcessMove( object moveData )
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task Resign( )
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<object> SendData( object data )
+        {
+            throw new NotImplementedException();
+        }
+
+        public void SendMessage( object data )
+        {
+            throw new NotImplementedException();
+        }
     }
 }

@@ -40,13 +40,23 @@ namespace Game.Presenters
             
             _board.SetupState(GameState.Initial, true);
             _board.GameReady = GameStarted;
-            _board.StateChagned = GameStateChanged;
+            _board.StateChanged = GameStateChanged;
             _board.SetText("Начало игры");
+
+
+            if(_game.HaveChat)
+            {
+                _main.ShowChat();
+            }
+            else {
+                _main.HideChat();
+            }
 
         }
 
-        private void GameStateChanged( GameState state ) {
-            _game.SendData(state);
+        private async Task<bool> GameStateChanged( GameState state ) {
+            var result = await _game.MakeMove(state);
+            return (result as bool?) ?? false;
         }
 
 

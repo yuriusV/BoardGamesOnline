@@ -10,7 +10,7 @@ namespace Game.Interfaces
     public interface IChessBoardView
     {
         Action IntervalElapsed { get; set; }
-        Action<GameState> StateChagned { get; set; }
+        Func<GameState, Task<bool>> StateChanged { get; set; }
         Action GameReady { get; set; }
 
         void SetupState( GameState state, bool isWhite );

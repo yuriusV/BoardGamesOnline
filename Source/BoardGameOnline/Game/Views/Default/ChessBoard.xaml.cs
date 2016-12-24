@@ -15,6 +15,8 @@ using System.Windows.Shapes;
 using Game.Model.Game.Chess;
 using Game.Views.Default;
 using Game.Interfaces;
+using Game.Utils;
+using Game.Presenters;
 
 namespace Game.Views.Default
 {
@@ -36,9 +38,11 @@ namespace Game.Views.Default
             InitializeComponent();
             buttons = new Button[8, 8];
 
-            for(int i = 0; i < 8; i++)
+
+            // TODO : make for with correct catching 
+            foreach(var i in Enumerable.Range(0, 8))
             {
-                for(int j = 0; j < 8; j++)
+                foreach(var j in Enumerable.Range(0, 8))
                 {
                     buttons[i, j] = new Button();
                     buttons[i, j].SetValue(Grid.ColumnProperty, i);
@@ -66,9 +70,20 @@ namespace Game.Views.Default
             }
             else
             {
-                HandleMove(i, j);
-                clickedButton = null;
-                //UnsetIndicators();
+                if(i == clickedButton.Item1 && j == clickedButton.Item2)
+                {
+                    ToggleIndicator(i, j, false);
+                    clickedButton = null;
+                } else
+                    HandleMove(i, j);
+            }
+        }
+
+        private void UnsetIndicators( ) {
+            for(int i = 0; i < 8; i++) {
+                for(int j = 0; j < 8; j++) {
+                    buttons[i, j].BorderBrush = Brushes.Gray;
+                }
             }
         }
 
@@ -79,16 +94,28 @@ namespace Game.Views.Default
                 buttons[i, j].BorderBrush = Brushes.Gray;
         }
 
-        private void HandleMove( int i, int j) {
-
-
-            StateChaned(_state);
+        private async void HandleMove( int i, int j ) {
+            if(ChessMoveChecker.Check(_state, clickedButton, new Tuple<int, int>(i, j))) {
+                var result = await StateChanged?.Invoke(_state);
+                if(result)
+                {
+                    clickedButton = null;
+                    UnsetIndicators();
+                    UpdateState();
+                }
+                else {
+                    MainPresenter.Get().ShowError("Не возможно обработать ход.");
+                }
+            } else {
+                
+            }
+            
         }
 
         private void UpdateState( ) {
             for(int i = 0; i < 8; i++) {
                 for(int j = 0; j < 8; j++) {
-                    buttons[i, j].Content = _state.Field[i, j].ToString();
+                    buttons[j, i].Content = _state.Field[i, j].ToString();
                 }
             }
         }
@@ -97,20 +124,9 @@ namespace Game.Views.Default
         #region [IChessBoardView implementation]
         public Action GameReady { get; set; }
 
-        public Action IntervalElapsed
-        {
-            get
-            {
-                throw new NotImplementedException();
-            }
+        public Action IntervalElapsed { get; set; }
 
-            set
-            {
-                throw new NotImplementedException();
-            }
-        }
-
-        public Action<GameState> StateChagned { get; set; }
+        public Func<GameState, Task<bool>> StateChanged { get; set; }
 
         public void SetupState( GameState state, bool isWhite )
         {

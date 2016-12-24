@@ -14,6 +14,14 @@ namespace Game.Interfaces
         Action Unminimized { get; set; }
         Action ClosingWindow { get; set; }
 
+        Func<object, bool> OnChatMessage { get; set; }
+
+        void ShowChat( );
+        void HideChat( );
+        void ClearChat( );
+        void AddMessageToChat( object message );
+        void SetChatTitle( object title);
+
         void RegisterMainMenuItem( string title, Action clicked, Dictionary<string, Action> subitems = null);
         void SetDefaultView( UserControl control );
         void SetupView( UserControl control);

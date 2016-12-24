@@ -39,7 +39,7 @@ namespace Game.Games.Chess
 
         public void Close( )
         {
-            throw new NotImplementedException();
+            
         }
 
         public async Task<object> MakeMove( object moveData )

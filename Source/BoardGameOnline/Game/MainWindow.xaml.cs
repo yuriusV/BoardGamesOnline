@@ -15,6 +15,7 @@ using System.Windows.Shapes;
 
 using Game.Interfaces;
 using Game.Presenters;
+using Game.Model.View;
 
 namespace Game
 {
@@ -46,7 +47,9 @@ namespace Game
         public Action ClosingWindow { get; set; }
         public Action WindowLoaded { get; set; }
         public Action Unminimized { get; set; }
-        
+
+        public Func<object, bool> OnChatMessage { get; set; }
+
         public void RegisterMainMenuItem( string title, Action clicked, Dictionary<string, Action> subitems = null )
         {
             var item = new MenuItem();
@@ -87,6 +90,31 @@ namespace Game
         public void ShowMessage( string message )
         {
             MessageBox.Show(message, "Info", MessageBoxButton.OK, MessageBoxImage.Information);
+        }
+
+        public void ShowChat( )
+        {
+            chatColumn.Width = new GridLength(1, GridUnitType.Star);
+        }
+
+        public void HideChat( )
+        {
+            chatColumn.Width = new GridLength(0);
+        }
+
+        public void ClearChat( )
+        {
+            
+        }
+
+        public void AddMessageToChat( object message )
+        {
+            
+        }
+
+        public void SetChatTitle( object title )
+        {
+            chatTitleText.Text = ((ChatTitle)title).Text;
         }
     }
 }
