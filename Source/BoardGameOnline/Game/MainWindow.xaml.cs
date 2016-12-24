@@ -14,6 +14,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 using Game.Interfaces;
+using Game.Presenters;
 
 namespace Game
 {
@@ -24,7 +25,10 @@ namespace Game
     {
         public MainWindow( )
         {
+            
             InitializeComponent();
+            var presenter = new MainPresenter();
+            presenter.SetupView(this);
 
             Loaded += (s,e) => WindowLoaded?.Invoke();
             Closing += ( s, e ) => ClosingWindow?.Invoke();

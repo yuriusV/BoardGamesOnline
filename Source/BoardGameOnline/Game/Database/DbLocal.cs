@@ -13,13 +13,34 @@ namespace Game.Database
 {
     public static class DbLocal
     {
-        public static Task SetupLocalUser( User user ) {
+        public static async Task<bool> SetupLocalUser( User user ) {
+            return await Task.Run(( ) => {
 
+                return true;
+            });
+        }
+        
+        public static async Task<bool> AddOrUpdateUser( User user ) {
+            return await Task.Run(( ) => {
+
+                return true;
+            });
+        }
+
+        public static async Task<IEnumerable<User>> FetchUsers( ) {
+            return await Task.Run(( ) => {
+
+                return new User[1];
+            });
+        }
+
+        public static async Task<User> GetCurrentUser( ) {
+            return await Task.Run(( ) => {
+
+                return new User();
+            });
         }
 
 
-        public static Task AddUser( User user ) {
-
-        }
     }
 }
