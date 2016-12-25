@@ -8,6 +8,8 @@ namespace Game.Games.Chess
 {
     public class ChessGameWithPC : IGame
     {
+        public Action Ended { get; set; }
+
         public bool HaveChat
         {
             get
@@ -17,7 +19,23 @@ namespace Game.Games.Chess
             set { throw new NotImplementedException(); }
         }
 
-        
+        public object Settings
+        {
+            get
+            {
+                throw new NotImplementedException();
+            }
+
+            set
+            {
+                throw new NotImplementedException();
+            }
+        }
+
+        public bool CanMove( object move )
+        {
+            throw new NotImplementedException();
+        }
 
         public List<object> CheckData( object data )
         {

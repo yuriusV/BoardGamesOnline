@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Game.Interfaces;
 using System.Windows.Controls;
 using Game.Views.Default;
+using Game.Model.Game.Chess;
 
 namespace Game.Presenters
 {
@@ -19,7 +20,7 @@ namespace Game.Presenters
 
             return _instance;
         }
-
+        private bool _nowProcessing = false;
 
         private LinkedList<Func<object, bool>> _messageListeners;
         private IMainView _mainView = null;
@@ -68,7 +69,7 @@ namespace Game.Presenters
 
             var pres = new ChessBoardPresenter();
             pres.Register(sets);
-
+            _nowProcessing = true;
         }
 
         private void StartGameAgainstPC( ) {

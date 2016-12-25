@@ -9,6 +9,7 @@ namespace Game.Interfaces
 {
     public interface IChessBoardView
     {
+        void Start(ChessSettings settings );
         Action IntervalElapsed { get; set; }
         Func<GameState, Task<bool>> StateChanged { get; set; }
         Action GameReady { get; set; }

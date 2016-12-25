@@ -37,6 +37,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="ChessDotNet, Version=0.9.2.0, Culture=neutral, PublicKeyToken=95fb3ccd1157343b, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Debug\ChessDotNet.dll</HintPath>
+    </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.0.0\lib\net45\EntityFramework.dll</HintPath>
       <Private>True</Private>
@@ -105,6 +109,7 @@
     <Compile Include="Interfaces\IChessBoard.cs" />
     <Compile Include="Interfaces\IHelp.cs" />
     <Compile Include="Interfaces\IMainView.cs" />
+    <Compile Include="Model\Game\Chess\ChessSettings.cs" />
     <Compile Include="Model\Game\Chess\GameState.cs" />
     <Compile Include="Model\View\ChatMessage.cs" />
     <Compile Include="Model\View\ChatTitle.cs" />
@@ -112,6 +117,7 @@
     <Compile Include="Modules\IGameExtension.cs" />
     <Compile Include="Modules\Loader.cs" />
     <Compile Include="Presenters\ChessBoardPresenter.cs" />
+    <Compile Include="Utils\Converter.cs" />
     <Compile Include="Presenters\GamePresenter.cs" />
     <Compile Include="Presenters\HelpPresenter.cs" />
     <Compile Include="Presenters\MainPresenter.cs" />

@@ -4,13 +4,26 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ChessDotNet;
+using ChessDotNet.Pieces;
 
 namespace Game.Utils
 {
     public static class ChessMoveChecker
     {
-        public static bool Check( GameState state, Tuple<int, int> start, Tuple<int, int> to ) {
-            return true;
+        public static ChessGame Game;
+
+        static ChessMoveChecker( ) {
+            Game = new ChessGame();
+            
         }
+
+    }
+
+    public enum ChessMoveState {
+        Unsucess,
+        Sucess,
+        Check,
+        Mate
     }
 }

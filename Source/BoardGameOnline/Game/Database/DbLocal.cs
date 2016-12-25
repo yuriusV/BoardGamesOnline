@@ -46,6 +46,7 @@ namespace Game.Database
             }
             catch(Exception e) {
                 Debug.Write("Cannot connect to database.");
+                throw;
             }
             
         }

@@ -7,9 +7,16 @@ using System.Threading.Tasks;
 namespace Game.Model.Game.Chess
 {
 
+    public class BPosition {
+        public int Column;
+        public int Row;
+    }
+
     public class GameState
     {
         public Figure[,] Field { get; set; }
+        public Tuple<Tuple<int, int>, Tuple<int, int>> LastMove { get; set; }
+        public List<Tuple<BPosition, BPosition>> Moves { get; set; }
 
         public static GameState Initial;
 
@@ -50,7 +57,23 @@ namespace Game.Model.Game.Chess
 
         public GameState( ) {
             Field = new Figure[8, 8];
-        } 
+        }
+    
+        
+        public GameState GetWithMove( BPosition b1, BPosition b2 ) {
+            var copy = new Figure[8, 8];
+            for(int i = 0; i < 8; i++) {
+                for(int j = 0; j < 8; j++) {
+                    copy[i, j] = Field[i, j];
+                }
+            }
+
+            copy[b2.Column, b2.Row] = copy[b1.Column, b1.Row];
+            copy[b1.Column, b1.Row] = Figure.None;
+            var moves = Moves;moves.Add(new Tuple<BPosition, BPosition>(b1, b2));
+
+            return new GameState() { Field = copy, Moves = moves};
+        }
     }
 
     public enum Figure {

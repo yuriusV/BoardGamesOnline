@@ -53,7 +53,7 @@ namespace Game.Settings
                     AppSettings.Select(x => x.Key + divider2 + x.Value)));
             }
             catch(Exception e) {
-
+                throw;
             }
         }
 
