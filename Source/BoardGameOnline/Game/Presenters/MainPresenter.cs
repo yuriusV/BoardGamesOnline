@@ -88,6 +88,12 @@ namespace Game.Presenters
             _mainView.SetupView(null);
         }
 
+        public void ShowQuestion( string question, Action<bool> answered ) {
+            _mainView.ShowQuestion(question, (res) => {
+                answered(res);
+            });
+        }
+
         public void ShowInfo( object info ) {
             _mainView.ShowMessage(info as string);
         }

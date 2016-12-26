@@ -27,5 +27,6 @@ namespace Game.Interfaces
         void SetupView( UserControl control);
         void ShowMessage( string message );
         void ShowError( string error );
+        void ShowQuestion( string question, Action<bool> answer );
     }
 }

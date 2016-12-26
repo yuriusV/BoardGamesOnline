@@ -6,13 +6,13 @@
              xmlns:local="clr-namespace:Game.Views._3D"
              mc:Ignorable="d" 
              xmlns:pieces="clr-namespace:Game.Views._3D"
-             xmlns:UI="clr-namespace:Game.Views._3D"
              xmlns:md="http://materialdesigninxaml.net/winfx/xaml/themes"
-             d:DesignHeight="300" d:DesignWidth="300">
+             d:DesignHeight="300" d:DesignWidth="500">
     <Grid x:Name="LayoutRoot" Height="auto" Width="auto">
         <Grid.RowDefinitions>
+            <RowDefinition Height="2*"/>
             <RowDefinition Height="*"/>
-            <RowDefinition Height="5*"/>
+            <RowDefinition Height="6*"/>
         </Grid.RowDefinitions>
 
         <Grid Grid.Row="0">
@@ -24,11 +24,31 @@
             <md:TimePicker Name="timer" Grid.Column="0" ></md:TimePicker>
 
             <md:Card Grid.Column="1" Name="boardText" FontSize="20"/>
+
+            <Grid Grid.Column="2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+
+                <Button Name="viewMover">Вид сбоку</Button>
+            </Grid>
         </Grid>
-        
-        <Viewport3D Grid.Row="1" ClipToBounds="True" x:Name="_3DChess" d:LayoutOverrides="VerticalAlignment" Margin="0,-8,0,8">
+
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="3*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <Button Name="cancelButton" >Отменить ход</Button>
+            <Button Name="resignButton"  Grid.Column="2">Сдаться</Button>
+        </Grid>
+
+        <Viewport3D Grid.Row="2" ClipToBounds="True" x:Name="_3DChess" d:LayoutOverrides="VerticalAlignment" Margin="0,-8,0,8">
             <Viewport3D.Camera>
-                <PerspectiveCamera x:Name="Camera" FieldOfView="60" FarPlaneDistance="100" LookDirection="0,15.066,-20.976" Position="0,-17.066,20.976" NearPlaneDistance="0.1" UpDirection="0.003,0.623,0.782"/>
+                <PerspectiveCamera x:Name="Camera" FieldOfView="80" FarPlaneDistance="100" LookDirection="0,15.066,-20.976" Position="0,-17.066,20.976" NearPlaneDistance="0.1" UpDirection="0.003,0.623,0.782"/>
             </Viewport3D.Camera>
             <ModelVisual3D x:Name="AmbientLightContainer5" >
                 <ModelVisual3D.Content>

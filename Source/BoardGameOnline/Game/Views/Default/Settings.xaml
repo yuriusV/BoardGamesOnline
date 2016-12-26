@@ -7,6 +7,16 @@
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="8*"/>
+        </Grid.RowDefinitions>
+        <TabControl Name="mainTab">
             
+        </TabControl>
+
+        <StackPanel Orientation="Horizontal" Grid.Row="1">
+            <Button Name="saveButton">Сохранить</Button>
+            <Button Name="cancelButton">Отменить</Button>
+        </StackPanel>
     </Grid>
 </UserControl>

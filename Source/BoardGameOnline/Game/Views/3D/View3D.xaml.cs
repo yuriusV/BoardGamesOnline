@@ -1,4 +1,5 @@
 ﻿using Game.Model.Game.Chess;
+using Game.Presenters;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -100,18 +101,48 @@ namespace Game.Views._3D
         private GameState _state;
         private ChessSettings _settings;
         private int _currentSeconds = -1;
+        private bool _watchAtSide = false;
 
-
+        private Tuple<Vector3D, Point3D> _cameraSide;
+        private Tuple<Vector3D, Point3D> _cameraFront;
+        
         public View3D( )
         {
             InitializeComponent();
 
             Loaded += UserControl_Loaded;
 
+            _cameraFront = new Tuple<Vector3D, Point3D>(Camera.LookDirection, Camera.Position);
+            _cameraSide = new Tuple<Vector3D, Point3D>(new Vector3D(20.066, 0, -5.976), new Point3D(-17.066, 0, 20.976));
+
+            viewMover.Click += ( s, e ) =>
+            {
+                viewMover.Content = _watchAtSide ? "Вид сбоку" : "Вид сзади";
+                _watchAtSide = !_watchAtSide;
+                if(_watchAtSide)
+                {
+                    Camera.Position = _cameraSide.Item2;
+                    Camera.LookDirection = _cameraSide.Item1;
+                }
+                else
+                {
+                    Camera.Position = _cameraFront.Item2;
+                    Camera.LookDirection = _cameraFront.Item1;
+                }
+            };
+            resignButton.Click += ( s, e ) => {
+                MainPresenter.Get().ShowQuestion("Хотите сдаться?", (val) => {
+                    if(val)
+                    {
+                        Stoped?.Invoke();
+                        GameLose();
+                    }      
+                });
+            };
 
             Border1.Fill = Border2.Fill = Border3.Fill = Border4.Fill = SystemColors.ControlTextBrush;
-
-
+            BoardPositions = new ChessPiece[8, 8];
+            
             SetupButtons();
 
             #region [Setup all fields]
@@ -549,6 +580,13 @@ namespace Game.Views._3D
 
         public void Start( ChessSettings settings )
         {
+            _settings = settings;
+
+            if(_settings.SecondLimited < 1)
+            {
+                timer.Visibility = Visibility.Hidden;
+            }
+
             GameReady?.Invoke();
         }
 
@@ -580,15 +618,15 @@ namespace Game.Views._3D
 
         private void GameLose( ) {
             Losed?.Invoke();
-
+            SetText("Игра окончена, вы проиграли.");
+            MainPresenter.Get().ReleaseControl();
         }
 
         private void SignalTime( )
         {
             SetText("Вы потратили слишком много времени.");
             timer.Background = Brushes.Red;
-            GameLose();
-                
+            GameLose();    
         }
 
         public void SetText( string text )

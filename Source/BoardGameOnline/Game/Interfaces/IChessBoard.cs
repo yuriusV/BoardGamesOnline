@@ -17,6 +17,7 @@ namespace Game.Interfaces
         Action Paused { get; set; }
         Action Stoped { get; set; }
         Action Losed { get; set; }
+        
 
         void SetupState( GameState state, bool isWhite );
         void SetClock( int seconds );

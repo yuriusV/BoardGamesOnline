@@ -8,10 +8,10 @@ namespace Game.Interfaces
 {
     public interface ISettingsView
     {
-        Action<Dictionary<string, Dictionary<string, string>>> Save { get; set; }
+        Action<Dictionary<string, Dictionary<string, Tuple<string, string>>>> Save { get; set; }
         Action Cancel { get; set; }
         Action<string, string, string> Updated { get; set; }
 
-        void DisplaySettings( Dictionary<string, Dictionary<string, object>> data);
+        void DisplaySettings( Dictionary<string, Dictionary<string, Tuple<string, string>>> data);
     }
 }

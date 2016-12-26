@@ -7,10 +7,10 @@
         mc:Ignorable="d"
         xmlns:md="http://materialdesigninxaml.net/winfx/xaml/themes"
         Title="MainWindow" Height="600" Width="800">
-    <DockPanel>
+    <DockPanel Name="mainBlock">
         <Menu DockPanel.Dock="Top" Name="mainMenu">
         </Menu>
-        <Grid  DockPanel.Dock="Bottom">
+        <Grid DockPanel.Dock="Bottom">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="3*"/>
                 <ColumnDefinition Name="chatColumn" Width="*"/>
@@ -52,5 +52,6 @@
                 </Grid>
             </Grid>
         </Grid>
+
     </DockPanel>
 </Window>

@@ -79,7 +79,9 @@ namespace Game
         public void SetupView( UserControl control )
         {
             Field.Children.Clear();
-            Field.Children.Add(control);
+            if(control != null)
+                Field.Children.Add(control);
+
         }
 
         public void ShowError( string error )
@@ -109,17 +111,20 @@ namespace Game
 
         public void AddMessageToChat( object message )
         {
-            
+               
         }
 
         public void SetChatTitle( object title )
         {
             chatTitleText.Text = ((ChatTitle)title).Text;
         }
-
-        public void RegisterMainMenuItem( string v, Action p )
+        
+        public void ShowQuestion( string question, Action<bool> answer )
         {
-            RegisterMainMenuItem(v, p, null);
+            Task.Run(() => {
+                var res = MessageBox.Show(question, "", MessageBoxButton.YesNo, MessageBoxImage.Question);
+                answer(res == MessageBoxResult.OK || res == MessageBoxResult.Yes);
+            });
         }
     }
 }

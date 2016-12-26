@@ -31,6 +31,7 @@ namespace Game.Presenters
             {
                 SettingsManager.AppSettings = data;
                 SettingsManager.Save();
+                _main.ReleaseControl();
             };
         }
     }
