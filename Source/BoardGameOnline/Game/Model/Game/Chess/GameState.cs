@@ -10,12 +10,20 @@ namespace Game.Model.Game.Chess
     public class BPosition {
         public int Column;
         public int Row;
+
+
+        public BPosition( ) { }
+
+        public BPosition( int row, int column ) {
+            Row = row;
+            Column = column;
+        }
     }
 
     public class GameState
     {
         public Figure[,] Field { get; set; }
-        public Tuple<Tuple<int, int>, Tuple<int, int>> LastMove { get; set; }
+        public Tuple<BPosition, BPosition> LastMove { get; set; }
         public List<Tuple<BPosition, BPosition>> Moves { get; set; }
 
         public static GameState Initial;
@@ -67,12 +75,16 @@ namespace Game.Model.Game.Chess
                     copy[i, j] = Field[i, j];
                 }
             }
-
+            
             copy[b2.Column, b2.Row] = copy[b1.Column, b1.Row];
             copy[b1.Column, b1.Row] = Figure.None;
-            var moves = Moves;moves.Add(new Tuple<BPosition, BPosition>(b1, b2));
+            var moves = Moves;
+            moves?.Add(new Tuple<BPosition, BPosition>(b1, b2));
+            var lastMove = new Tuple<BPosition, BPosition>(
+                new BPosition(b1.Row, b1.Column), 
+                new BPosition(b2.Row, b2.Column));
 
-            return new GameState() { Field = copy, Moves = moves};
+            return new GameState() { Field = copy, Moves = moves, LastMove = lastMove};
         }
     }
 

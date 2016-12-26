@@ -16,6 +16,7 @@ namespace Game.Games.Chess
         private List<string> pendingMessages = new List<string>();
         private List<GameState> pendingMoves = new List<GameState>();
         private ChessGame _gameLib = new ChessGame();
+        private Tuple<BPosition, BPosition> _lastMove;
 
         public Action Ended { get; set; }
 
@@ -64,6 +65,13 @@ namespace Game.Games.Chess
             
         }
 
+        public List<object> GetMoves( object inputPosition )
+        {
+            var pos = (BPosition)inputPosition;
+            return _gameLib.GetValidMoves(new Position(Converter.ConvertChessPosition(pos)))
+                .Select(x => (object)Converter.ConvertChessPosition(x.NewPosition.ToString())).ToList();
+        }
+
         public async Task<object> MakeMove( object moveData )
         {
             var state = (GameState)moveData;
@@ -91,10 +99,18 @@ namespace Game.Games.Chess
             throw new NotImplementedException();
         }
 
-        public Task Resign( )
+        public bool QueryCancelMove( )
         {
-            return Task.Run(() => _gameLib.Resign(Player.None));
+            if(_lastMove == null)
+                return false;
+
+            return _gameLib.ApplyMove(new Move(
+                    Converter.ConvertChessPosition(_lastMove.Item1),
+                    Converter.ConvertChessPosition(_lastMove.Item2),
+                    _gameLib.WhoseTurn == Player.Black ? Player.White : Player.Black), 
+                alreadyValidated: true) != MoveType.Invalid;
         }
+        
 
         public Task<object> SendData( object data )
         {
@@ -104,6 +120,12 @@ namespace Game.Games.Chess
         public void SendMessage( object data )
         {
             throw new NotImplementedException();
+        }
+
+        Task<bool> IGame.Resign( )
+        {
+            Close();
+            return Task.Run(( ) => { _gameLib.Resign(Player.None); return true; });
         }
     }
 }

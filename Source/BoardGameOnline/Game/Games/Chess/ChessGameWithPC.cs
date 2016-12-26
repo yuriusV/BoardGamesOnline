@@ -52,6 +52,11 @@ namespace Game.Games.Chess
             throw new NotImplementedException();
         }
 
+        public List<object> GetMoves( object inputPosition )
+        {
+            throw new NotImplementedException();
+        }
+
         public Task<object> MakeMove( object moveData )
         {
             throw new NotImplementedException();
@@ -72,6 +77,11 @@ namespace Game.Games.Chess
             throw new NotImplementedException();
         }
 
+        public bool QueryCancelMove( )
+        {
+            throw new NotImplementedException();
+        }
+
         public Task Resign( )
         {
             throw new NotImplementedException();
@@ -83,6 +93,11 @@ namespace Game.Games.Chess
         }
 
         public void SendMessage( object data )
+        {
+            throw new NotImplementedException();
+        }
+
+        Task<bool> IGame.Resign( )
         {
             throw new NotImplementedException();
         }

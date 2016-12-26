@@ -33,16 +33,16 @@ namespace Game.Utils
             _lib = new ChessGame();
         }
 
-        public async Task<Tuple<BPosition, BPosition>> GetMoveAsync( GameState state, Settings sets) {
-            _current = sets;
+        //public async Task<Tuple<BPosition, BPosition>> GetMoveAsync( GameState state, Settings sets) {
+        //    _current = sets;
 
-            return await Task.Run(( ) => {
-                _started = DateTime.Now;
-                GetMove(state, 0);
+        //    return await Task.Run(( ) => {
+        //        _started = DateTime.Now;
+        //        GetMove(state, 0);
+        //        return null;
+        //    });
 
-            });
-
-        }
+        //}
 
         public void GetMove(GameState state,  int level ) {
 

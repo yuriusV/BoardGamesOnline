@@ -11,6 +11,7 @@ using ChessDotNet;
 using ChessDotNet.Pieces;
 
 
+
 namespace Game.Presenters
 {
     public class ChessBoardPresenter
@@ -58,7 +59,7 @@ namespace Game.Presenters
             _board.GameReady = GameStarted;
             _board.StateChanged = GameStateChanged;
             _board.SetText("Начало игры");
-
+            _board.GetMovesFrom = ( item ) => _game.GetMoves(item).Select(x=> (BPosition)x).ToList();
 
             if(_game.HaveChat)
             {

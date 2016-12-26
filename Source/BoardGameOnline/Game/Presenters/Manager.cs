@@ -7,6 +7,7 @@ using Game.Interfaces;
 using Game.Settings;
 using Game.Views;
 using Game.Views.Default;
+using System.Reflection;
 
 namespace Game.Presenters
 {
@@ -41,7 +42,7 @@ namespace Game.Presenters
             if(view == "Default")
                 return new ChessBoard();
             else
-                return new ChessBoard();
+                return new Views._3D.View3D();
         }
     }
 }

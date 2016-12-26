@@ -20,8 +20,11 @@ namespace Game.Games
 
 
         Task<object> MakeMove( object moveData );
-        object ProcessMove( object moveData ); //????
+        bool QueryCancelMove( );
+        object ProcessMove( object moveData );
+
         bool CanMove( object move );
+        List<object> GetMoves( object inputPosition );
 
         void SendMessage( object data);
         List<object> CheckMessages( );
@@ -29,7 +32,7 @@ namespace Game.Games
         Task<object> SendData( object data );
         List<object> CheckData( object data);
 
-        Task Resign( );
+        Task<bool> Resign( );
         void Close( );
     }
 }

@@ -116,5 +116,10 @@ namespace Game
         {
             chatTitleText.Text = ((ChatTitle)title).Text;
         }
+
+        public void RegisterMainMenuItem( string v, Action p )
+        {
+            RegisterMainMenuItem(v, p, null);
+        }
     }
 }

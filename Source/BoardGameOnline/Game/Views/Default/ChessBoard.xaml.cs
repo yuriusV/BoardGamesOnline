@@ -57,7 +57,9 @@ namespace Game.Views.Default
 
                     buttons[i, j].Click += ( s, e ) => ClickButton(i, j);
 
-                    boardGrid.Children.Add(buttons[i, j]);
+                    if(i + j % 2 == 0)
+                        buttons[i, j].Background = new SolidColorBrush(SystemColors.WindowColor);
+                    //boardGrid.Children.Add(buttons[i, j]);
                 }
             }
 
@@ -105,9 +107,9 @@ namespace Game.Views.Default
         }
 
         private async void HandleMove( int i, int j ) {
-            _state.LastMove = new Tuple<Tuple<int, int>, Tuple<int, int>>(
-                _clickedCell, 
-                new Tuple<int, int>(i, j)
+            _state.LastMove = new Tuple<BPosition, BPosition>(
+                new BPosition(_clickedCell.Item1, _clickedCell.Item2), 
+                new BPosition(i, j)
             );
 
             var result = await StateChanged?.Invoke(_state);
@@ -141,6 +143,19 @@ namespace Game.Views.Default
         public Action IntervalElapsed { get; set; }
 
         public Func<GameState, Task<bool>> StateChanged { get; set; }
+
+        public Func<BPosition, List<BPosition>> GetMovesFrom
+        {
+            get
+            {
+                throw new NotImplementedException();
+            }
+
+            set
+            {
+                throw new NotImplementedException();
+            }
+        }
 
         public void SetupState( GameState state, bool isWhite )
         {

@@ -24,6 +24,7 @@ namespace Game.Presenters
 
         private LinkedList<Func<object, bool>> _messageListeners;
         private IMainView _mainView = null;
+
         
         public MainPresenter( ) {
             _instance = this;
@@ -42,6 +43,7 @@ namespace Game.Presenters
             view.RegisterMainMenuItem("Текущая", ( ) => { }, new Dictionary<string, Action> {
                 //["Сделать ход"]
             });
+            view.RegisterMainMenuItem("Настройки", ( ) => StartSettings(), null);
             view.HideChat();
             view.OnChatMessage = ChatMessageRecived;
 
@@ -52,6 +54,10 @@ namespace Game.Presenters
         {
 
             
+        }
+
+        public void StartSettings( ) {
+
         }
 
         public void AddMessageListener( Func<object, bool> message ) {
