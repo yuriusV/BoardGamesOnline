@@ -7,15 +7,23 @@
              mc:Ignorable="d" 
              xmlns:pieces="clr-namespace:Game.Views._3D"
              xmlns:UI="clr-namespace:Game.Views._3D"
+             xmlns:md="http://materialdesigninxaml.net/winfx/xaml/themes"
              d:DesignHeight="300" d:DesignWidth="300">
     <Grid x:Name="LayoutRoot" Height="auto" Width="auto">
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
-            <RowDefinition Height="9*"/>
+            <RowDefinition Height="5*"/>
         </Grid.RowDefinitions>
 
         <Grid Grid.Row="0">
-            
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <md:TimePicker Name="timer" Grid.Column="0" ></md:TimePicker>
+
+            <md:Card Grid.Column="1" Name="boardText" FontSize="20"/>
         </Grid>
         
         <Viewport3D Grid.Row="1" ClipToBounds="True" x:Name="_3DChess" d:LayoutOverrides="VerticalAlignment" Margin="0,-8,0,8">

@@ -27,6 +27,5 @@ namespace Game.Interfaces
         void SetupView( UserControl control);
         void ShowMessage( string message );
         void ShowError( string error );
-        void RegisterMainMenuItem( string v, Action p );
     }
 }

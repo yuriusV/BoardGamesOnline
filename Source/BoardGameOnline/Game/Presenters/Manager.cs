@@ -14,31 +14,40 @@ namespace Game.Presenters
     public class ViewPresenterManager
     {
 
+        private static string SettingsUser = "ViewManager";
         private static Type HelpType = typeof(IHelp);
         private static Type ChessBoardType = typeof(IChessBoardView);
-
+        private static Type SettingsType = typeof(ISettingsView);
+        
         public static object ResolveView(Type type) {
+
             if(type == HelpType)
-            {
                 return GetHelpView();
-            }
-            else if(type == ChessBoardType) {
+            else if(type == ChessBoardType)
                 return GetChessBoardView();
-            }
+            else if(type == SettingsType)
+                return GetSettingsView();
 
             return null;
         }
+        private static object GetSettingsView( ) {
+            var view = SettingsManager.Value(SettingsUser)["SettingsView"];
+            if(view == "Default")
+                return new Views.Default.Settings();
+
+            return new Views.Default.Settings();
+        }
 
         private static object GetHelpView( ) {
-            var view = SettingsManager.Value("HelpView");
+            var view = SettingsManager.Value(SettingsUser)["HelpView"];
             if(view == "Default")
                 return new Help();
-            else
-                return new Help();
+            
+            return new Help();
         }
 
         private static object GetChessBoardView( ) {
-            var view = SettingsManager.Value("ChessBoard");
+            var view = SettingsManager.Value(SettingsUser)["ChessBoard"];
             if(view == "Default")
                 return new ChessBoard();
             else

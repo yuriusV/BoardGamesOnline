@@ -13,14 +13,15 @@ namespace Game.Interfaces
         Action IntervalElapsed { get; set; }
         Func<GameState, Task<bool>> StateChanged { get; set; }
         Action GameReady { get; set; }
-        Func<BPosition, List<BPosition>> GetMovesFrom { get; set; } 
+        Func<BPosition, List<BPosition>> GetMovesFrom { get; set; }
+        Action Paused { get; set; }
+        Action Stoped { get; set; }
+        Action Losed { get; set; }
 
         void SetupState( GameState state, bool isWhite );
         void SetClock( int seconds );
         void SetText( string text );
         void SetHandleMoveFrom(bool white );
             
-        void OnGamePaused( Action paused );
-        void OnGameFinished( Action stopped );
     }
 }

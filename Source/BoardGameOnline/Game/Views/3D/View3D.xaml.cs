@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Timers;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -93,10 +94,12 @@ namespace Game.Views._3D
         private event System.EventHandler PiecePicked;
         private event System.EventHandler PieceReleased;
         private Rectangle[,] _cells;
+        private Timer _timer;
 
         private BPosition _selection = null;
         private GameState _state;
         private ChessSettings _settings;
+        private int _currentSeconds = -1;
 
 
         public View3D( )
@@ -179,20 +182,8 @@ namespace Game.Views._3D
             //set the new piece location on the matrix
             BoardPositions[Convert.ToInt32(newCoord.X) - 1, Convert.ToInt32(newCoord.Y) - 1] = piece;
         }
-
-        /// <summary>
-        /// Do not use this field, use the BoardPositions property instead
-        /// </summary>
-        private ChessPiece[,] _boardPositions = new ChessPiece[8, 8];
-
-        /// <summary>
-        /// 2D Array of chesspieces, tracks the board position of the pieces
-        /// </summary>
-        protected ChessPiece[,] BoardPositions
-        {
-            get { return _boardPositions; }
-            set { _boardPositions = value; }
-        }
+        
+        protected ChessPiece[,] BoardPositions { get; set; }
 
 
         /// <summary>
@@ -551,6 +542,11 @@ namespace Game.Views._3D
 
         public Func<BPosition, List<BPosition>> GetMovesFrom { get; set; }
 
+        public Action Paused { get; set; }
+        public Action Stoped { get; set; }
+        public Action Losed { get; set; }
+
+
         public void Start( ChessSettings settings )
         {
             GameReady?.Invoke();
@@ -564,7 +560,35 @@ namespace Game.Views._3D
 
         public void SetClock( int seconds )
         {
-            
+            _settings.SecondLimited = seconds;
+            _currentSeconds = seconds;
+            _timer?.Dispose();
+            if(seconds == -1)
+                return;
+            _timer = new Timer(1000);
+            _timer.Elapsed += ( s, e ) => UpdateTime();
+            _timer.Start();
+        }
+
+        private void UpdateTime( )
+        {
+            _currentSeconds -= 1;
+            if(_currentSeconds <= 1) {
+                SignalTime();
+            }
+        }
+
+        private void GameLose( ) {
+            Losed?.Invoke();
+
+        }
+
+        private void SignalTime( )
+        {
+            SetText("Вы потратили слишком много времени.");
+            timer.Background = Brushes.Red;
+            GameLose();
+                
         }
 
         public void SetText( string text )
@@ -576,18 +600,7 @@ namespace Game.Views._3D
         {
             
         }
-
-        public void OnGamePaused( Action paused )
-        {
-            
-        }
-
-        public void OnGameFinished( Action stopped )
-        {
-            
-        }
-
-
+        
         #endregion
     }
 }

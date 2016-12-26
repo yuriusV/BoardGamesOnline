@@ -52,13 +52,15 @@ namespace Game.Presenters
 
         private void StartRemoteGame( )
         {
-
             
         }
 
-        public void StartSettings( ) {
-
+        private void StartSettings( ) {
+            var pres = new SettingsPresenter();
+            pres.Register();
         }
+
+
 
         public void AddMessageListener( Func<object, bool> message ) {
             _messageListeners.AddLast(message);
@@ -81,7 +83,10 @@ namespace Game.Presenters
         private void StartGameAgainstPC( ) {
             
         }
-
+        
+        public void ReleaseControl( ) {
+            _mainView.SetupView(null);
+        }
 
         public void ShowInfo( object info ) {
             _mainView.ShowMessage(info as string);
