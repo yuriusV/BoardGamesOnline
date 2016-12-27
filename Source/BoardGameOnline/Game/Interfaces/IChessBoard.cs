@@ -17,8 +17,9 @@ namespace Game.Interfaces
         Action Paused { get; set; }
         Action Stoped { get; set; }
         Action Losed { get; set; }
-        
+        Func<bool> CancelLastMove { get; set; }
 
+        void SetChange( Tuple<BPosition, BPosition> move );
         void SetupState( GameState state, bool isWhite );
         void SetClock( int seconds );
         void SetText( string text );

@@ -112,6 +112,7 @@ namespace Game.Views._3D
 
             Loaded += UserControl_Loaded;
 
+
             _cameraFront = new Tuple<Vector3D, Point3D>(Camera.LookDirection, Camera.Position);
             _cameraSide = new Tuple<Vector3D, Point3D>(new Vector3D(20.066, 0, -5.976), new Point3D(-17.066, 0, 20.976));
 
@@ -128,6 +129,20 @@ namespace Game.Views._3D
                 {
                     Camera.Position = _cameraFront.Item2;
                     Camera.LookDirection = _cameraFront.Item1;
+                }
+            };
+
+            cancelButton.Click += async ( s, e ) => {
+                var cur = await Task<bool>.Run(() => {
+                    if(_state.Moves.Count < 1)
+                        return false;
+                    var res = CancelLastMove?.Invoke();
+                    return res.HasValue && res.Value;
+                });
+
+                if(cur) {
+                    var move = _state.Moves[_state.Moves.Count - 1];
+                    MovePiece(new Point(move.Item2.Column + 1, 8 - move.Item2.Row), new Point(move.Item1.Column + 1, 8 - move.Item1.Row));
                 }
             };
             resignButton.Click += ( s, e ) => {
@@ -365,7 +380,6 @@ namespace Game.Views._3D
             }
             catch(Exception ex)
             {
-                throw;
             }
         }
         public void MovePiece( string origin, string destination )
@@ -483,14 +497,18 @@ namespace Game.Views._3D
             if(p1 == null || p2 == null)
                 return await Task.Run(( ) => false);
 
-            var state = _state.GetWithMove(p1, p2);
-            var res = await StateChanged?.Invoke(state);
-            if(res) {
-                _state = state;
+            var old = _state;
+            _state = _state.GetWithMove(p1, p2);
+            var res = await StateChanged?.Invoke(_state);
+            if(res)
+            {
                 var figure = GetPieceAt(p1.Row, p1.Column);
-
                 MovePiece(figure.Coordinates, new Point(p2.Column + 1, 8 - p2.Row));
             }
+            else {
+                _state = old;
+            }
+
 
             ClearPieceSelection();
             UnHighlightAllCells();
@@ -573,6 +591,7 @@ namespace Game.Views._3D
 
         public Func<BPosition, List<BPosition>> GetMovesFrom { get; set; }
 
+        public Func<bool> CancelLastMove { get; set; }
         public Action Paused { get; set; }
         public Action Stoped { get; set; }
         public Action Losed { get; set; }
@@ -638,7 +657,16 @@ namespace Game.Views._3D
         {
             
         }
-        
+
+        public void SetChange( Tuple<BPosition, BPosition> move )
+        {
+            this.Dispatcher.Invoke(( ) => {
+                MovePiece(new Point(move.Item1.Column + 1, 8 - move.Item1.Row),
+                    new Point(move.Item2.Column + 1, 8 - move.Item2.Row));
+                _state = _state.GetWithMove(move.Item1, move.Item2);
+            });
+        }
+
         #endregion
     }
 }

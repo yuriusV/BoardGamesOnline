@@ -23,16 +23,18 @@ namespace Game.Presenters
             var view = ViewPresenterManager.ResolveView(typeof(ISettingsView));
             _main.QueryForSetupView(view as UserControl);
             _view = view as ISettingsView;
-            _view.DisplaySettings(SettingsManager.AppSettings);
+            _view.Data = Config.Get();
             _view.Cancel = ( ) => {
                 _main.ReleaseControl();       
             };
             _view.Save = data =>
             {
-                SettingsManager.AppSettings = data;
+                Config.Set(data);
                 SettingsManager.Save();
                 _main.ReleaseControl();
             };
+
+            _view.Start();
         }
     }
 }

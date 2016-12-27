@@ -44,11 +44,22 @@ namespace Game.Presenters
             if(_settings.Type == GameType.Single)
                 gameType = "single chess";
             else if(_settings.Type == GameType.AgainstPC)
-                gameType = "local chess";
+                gameType = "bot chess";
             else
                 gameType = "remote chess";
 
             _game = GameFactory.GetGame(gameType);
+
+            _game.MoveReceived = ( move ) => {
+                _needMoveWhite = !_needMoveWhite;
+                _countMoves++;
+                _board.SetChange(move as Tuple<BPosition, BPosition>);
+            };
+
+            _game.MessagesReceived = ( message ) => {
+                _main.AddChatMessage(message);
+            };
+
             _game.Settings = settings;
             _game.Open();
              
@@ -58,8 +69,11 @@ namespace Game.Presenters
             _board.SetupState(GameState.Initial, true);
             _board.GameReady = GameStarted;
             _board.StateChanged = GameStateChanged;
+            _board.CancelLastMove = ( ) => {
+                return _game.QueryCancelMove();
+            };
             _board.SetText("Начало игры");
-            _board.GetMovesFrom = ( item ) => _game.GetMoves(item).Select(x=> (BPosition)x).ToList();
+            _board.GetMovesFrom = ( item ) => _game.GetValidMoves(item).Select(x=> (BPosition)x).ToList();
 
             if(_game.HaveChat)
             {
@@ -94,7 +108,4 @@ namespace Game.Presenters
             _start = DateTime.Now;
         }
     }
-
-    
-
 }

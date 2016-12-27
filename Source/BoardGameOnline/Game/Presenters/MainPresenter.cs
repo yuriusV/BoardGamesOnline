@@ -7,6 +7,7 @@ using Game.Interfaces;
 using System.Windows.Controls;
 using Game.Views.Default;
 using Game.Model.Game.Chess;
+using Game.Settings;
 
 namespace Game.Presenters
 {
@@ -48,6 +49,11 @@ namespace Game.Presenters
             view.OnChatMessage = ChatMessageRecived;
 
             view.SetDefaultView(new MainScreen());
+
+
+            view.ClosingWindow = ( ) => {
+                SettingsManager.Save();
+            };
         }
 
         private void StartRemoteGame( )
@@ -56,6 +62,7 @@ namespace Game.Presenters
         }
 
         private void StartSettings( ) {
+            _mainView.SetupView(new WaitIView());
             var pres = new SettingsPresenter();
             pres.Register();
         }
@@ -81,11 +88,19 @@ namespace Game.Presenters
         }
 
         private void StartGameAgainstPC( ) {
-            
+            var sets = new ChessSettings();
+
+            sets.IsWhite = true;
+            sets.Type = GameType.AgainstPC;
+            sets.SecondLimited = -1;
+
+            var pres = new ChessBoardPresenter();
+            pres.Register(sets);
+            _nowProcessing = true;
         }
         
         public void ReleaseControl( ) {
-            _mainView.SetupView(null);
+            _mainView.SetupView(new MainScreen());
         }
 
         public void ShowQuestion( string question, Action<bool> answered ) {

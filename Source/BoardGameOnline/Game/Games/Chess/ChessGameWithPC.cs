@@ -3,73 +3,82 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Game.Utils;
+using Game.Model.Game.Chess;
+using Game.Settings;
+using System.Threading;
 
 namespace Game.Games.Chess
 {
     public class ChessGameWithPC : IGame
     {
         public Action Ended { get; set; }
+        private ChessToolValidate _validator;
+        private ChessAI _ai;
+        private int level;
+
+        public ChessGameWithPC( ) {
+            _validator = new ChessToolValidate(new ChessDotNet.ChessGame());
+            _ai = new ChessAI();
+            level = Config.Get().BotLevel;
+        }
 
         public bool HaveChat
         {
             get
             {
-                return true;
+                return false;
             }
             set { throw new NotImplementedException(); }
         }
 
-        public object Settings
-        {
-            get
-            {
-                throw new NotImplementedException();
-            }
+        public object Settings { get; set; }
 
-            set
-            {
-                throw new NotImplementedException();
-            }
-        }
+        public Action<object> MoveReceived { get; set; }
+        public Action<List<object>> MessagesReceived { get; set;}
+        public Action<object> DataReceived { get; set; }
 
         public bool CanMove( object move )
         {
-            throw new NotImplementedException();
+            return _validator.CanMove(move);
         }
-
-        public List<object> CheckData( object data )
-        {
-            throw new NotImplementedException();
-        }
-
-        public List<object> CheckMessages( )
-        {
-            throw new NotImplementedException();
-        }
-
+        
         public void Close( )
         {
-            throw new NotImplementedException();
+            
         }
 
-        public List<object> GetMoves( object inputPosition )
+        public List<object> GetValidMoves( object inputPosition )
         {
-            throw new NotImplementedException();
+            return _validator.GetMoves(inputPosition);
         }
 
-        public Task<object> MakeMove( object moveData )
+        public async Task<object> MakeMove( object moveData )
         {
-            throw new NotImplementedException();
+            var move = await _validator.MakeMove(moveData);
+            var userMoved = (GameState)moveData;
+            var response = await _ai.GetMoveAsync(userMoved, new ChessAI.Settings
+            {
+                IsWhite = !(Settings as ChessSettings).IsWhite,
+                Miliseconds = 10,
+                MinLevel = level
+            });
+            await _validator.MakeMove(userMoved.GetWithMove(response.Item1, response.Item2));
+            await Task.Run(( ) => {
+                MoveReceived?.Invoke(response);
+            }); 
+            
+            return move;
         }
 
-        public Task<bool> Open( )
+        public async Task<bool> Open( )
         {
-            throw new NotImplementedException();
+            return await Task.Run(() => true);
         }
 
-        public Task<bool> Pause( )
+        public async Task<bool> Pause( )
         {
-            throw new NotImplementedException();
+            return await Task.Run(( ) => true);
         }
 
         public object ProcessMove( object moveData )
@@ -79,27 +88,22 @@ namespace Game.Games.Chess
 
         public bool QueryCancelMove( )
         {
-            throw new NotImplementedException();
+            return _validator.QueryCancelMove();
         }
-
-        public Task Resign( )
-        {
-            throw new NotImplementedException();
-        }
-
+        
         public Task<object> SendData( object data )
         {
             throw new NotImplementedException();
         }
 
-        public void SendMessage( object data )
+        public Task<bool> SendMessage( object data )
         {
             throw new NotImplementedException();
         }
 
-        Task<bool> IGame.Resign( )
+        public async Task<bool> Resign( )
         {
-            throw new NotImplementedException();
+            return await Task.Run(( ) => true);
         }
     }
 }

@@ -33,43 +33,63 @@ namespace Game.Utils
             _lib = new ChessGame();
         }
 
-        //public async Task<Tuple<BPosition, BPosition>> GetMoveAsync( GameState state, Settings sets) {
-        //    _current = sets;
+        public async Task<Tuple<BPosition, BPosition>> GetMoveAsync( GameState state, Settings sets )
+        {
+            _current = sets;
+            _lastState = new List<GameState>();
+            return await Task.Run(( ) =>
+            {
+                _started = DateTime.Now;
+                GetMove(state, 0);
+                int maxCost = -100;
+                GameState max = new GameState();
+                foreach(var st in _lastState) {
+                    var res = CostPosition(st);
+                    if(res > maxCost)
+                    {
+                        maxCost = res;
+                        max = st;
+                    }
+                }
+                return max.Moves[max.Moves.Count - _current.MinLevel];
+            });
 
-        //    return await Task.Run(( ) => {
-        //        _started = DateTime.Now;
-        //        GetMove(state, 0);
-        //        return null;
-        //    });
+        }
 
-        //}
+        public bool GetMove(GameState state,  int level ) {
 
-        public void GetMove(GameState state,  int level ) {
+            if(level == _current.MinLevel) {
+                _lastState.Add(state);
+                return true;
+            }
 
-
-
-            var currentLib = new ChessGame(state.Moves.Select(x => new Move(
-               Converter.ConvertChessPosition(x.Item1),
-                Converter.ConvertChessPosition(x.Item2), _current.IsWhite ? Player.White : Player.Black )), movesAreValidated: true);
+            var currentLib = new ChessGame(new GameCreationData { Board = Converter.ConvertFigureToPieces(state.Field), WhoseTurn = _current.IsWhite ? Player.White : Player.Black});
 
             var owner = currentLib.GetValidMoves( ( _current.IsWhite ? Player.White: Player.Black))
-                                                .Select(x => State.GetWithMove(
+                                                .Select(x => state.GetWithMove(
                                                     Converter.ConvertChessPosition(x.OriginalPosition.ToString()), 
                                                     Converter.ConvertChessPosition(x.NewPosition.ToString()))).ToList();
 
             var next = new List<GameState>();
+            bool needEx = false;
             foreach(var variant in owner) {
+                if(GetMove(variant, level + 1))
+                    needEx = true;
             }
+            return needEx;
         }
 
 
 
-        public int CostPosition( ) {
+        public int CostPosition( GameState state ) {
             var result = 0;
             for(int i = 0; i < 8; i++) {
                 for(int j = 0; j < 8; j++) {
-                    if(State.Field[i, j] > 0 == _current.IsWhite) {
-                        result += _costs[State.Field[i, j]];
+                    if(state.Field[i, j] > 0 == _current.IsWhite) {
+                        result += _costs[state.Field[i, j]];
+                    } else if(state.Field[i, j] != 0)
+                    {
+                        result -= _costs[state.Field[i, j]];
                     }
                 }
             }

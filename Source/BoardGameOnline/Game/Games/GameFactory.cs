@@ -14,6 +14,7 @@ namespace Game.Games
                 return (IGame)new LocalChessGame();
             else if(name == "bot chess")
                 return (IGame)new ChessGameWithPC();
+            
 
             return null;
         }

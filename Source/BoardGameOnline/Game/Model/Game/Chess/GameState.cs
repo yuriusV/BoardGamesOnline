@@ -65,6 +65,7 @@ namespace Game.Model.Game.Chess
 
         public GameState( ) {
             Field = new Figure[8, 8];
+            Moves = new List<Tuple<BPosition, BPosition>>();
         }
     
         
@@ -76,9 +77,9 @@ namespace Game.Model.Game.Chess
                 }
             }
             
-            copy[b2.Column, b2.Row] = copy[b1.Column, b1.Row];
-            copy[b1.Column, b1.Row] = Figure.None;
-            var moves = Moves;
+            copy[b2.Row, b2.Column] = copy[b1.Row, b1.Column];
+            copy[b1.Row, b1.Column] = Figure.None;
+            var moves = new List<Tuple<BPosition, BPosition>>(Moves);
             moves?.Add(new Tuple<BPosition, BPosition>(b1, b2));
             var lastMove = new Tuple<BPosition, BPosition>(
                 new BPosition(b1.Row, b1.Column), 

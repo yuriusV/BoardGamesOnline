@@ -11,27 +11,29 @@ namespace Game.Games
 
         object Settings { get; set; }
 
+        Action<object> MoveReceived { get; set; }
+        Action<List<object>> MessagesReceived { get; set; }
+        Action<object> DataReceived { get; set; }
+
         Action Ended { get; set; }
 
         bool HaveChat { get; set; }
+        bool CanMove( object move );
+        List<object> GetValidMoves( object inputPosition );
+
+
 
         Task<bool> Open( );
         Task<bool> Pause( );
-
-
+        
         Task<object> MakeMove( object moveData );
         bool QueryCancelMove( );
         object ProcessMove( object moveData );
 
-        bool CanMove( object move );
-        List<object> GetMoves( object inputPosition );
-
-        void SendMessage( object data);
-        List<object> CheckMessages( );
-
+        
+        Task<bool> SendMessage( object data);
         Task<object> SendData( object data );
-        List<object> CheckData( object data);
-
+        
         Task<bool> Resign( );
         void Close( );
     }

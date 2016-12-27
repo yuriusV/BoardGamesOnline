@@ -196,6 +196,19 @@ namespace Game.Views.Default
             }
         }
 
+        public Func<bool> CancelLastMove
+        {
+            get
+            {
+                throw new NotImplementedException();
+            }
+
+            set
+            {
+                throw new NotImplementedException();
+            }
+        }
+
         public void SetupState( GameState state, bool isWhite )
         {
             _state = state;
@@ -243,6 +256,11 @@ namespace Game.Views.Default
         public void Start( ChessSettings settings )
         {
             _settings = settings;
+        }
+
+        public void SetChange( Tuple<BPosition, BPosition> move )
+        {
+            throw new NotImplementedException();
         }
 
         #endregion

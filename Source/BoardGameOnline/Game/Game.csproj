@@ -97,10 +97,15 @@
     <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Games\Chess\ChessBase.cs" />
     <Compile Include="Interfaces\ISettingsView.cs" />
     <Compile Include="Presenters\SettingsPresenter.cs" />
+    <Compile Include="Settings\Config.cs" />
     <Compile Include="Views\Default\Settings.xaml.cs">
       <DependentUpon>Settings.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Default\WaitIView.xaml.cs">
+      <DependentUpon>WaitIView.xaml</DependentUpon>
     </Compile>
     <Page Include="App.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -123,7 +128,6 @@
     <Compile Include="Modules\IGameExtension.cs" />
     <Compile Include="Modules\Loader.cs" />
     <Compile Include="Presenters\ChessBoardPresenter.cs" />
-    <Compile Include="Settings\ISettingUser.cs" />
     <Compile Include="Utils\ChessAI.cs" />
     <Compile Include="Utils\Converter.cs" />
     <Compile Include="Presenters\GamePresenter.cs" />
@@ -219,6 +223,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\Default\Settings.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Default\WaitIView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

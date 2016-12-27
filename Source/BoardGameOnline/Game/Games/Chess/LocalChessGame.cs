@@ -6,7 +6,6 @@ using System.Threading.Tasks;
 using Game.Model.Game.Chess;
 using ChessDotNet;
 using Game.Utils;
-using Game.Model.Game.Chess;
 
 namespace Game.Games.Chess
 {
@@ -15,8 +14,13 @@ namespace Game.Games.Chess
 
         private List<string> pendingMessages = new List<string>();
         private List<GameState> pendingMoves = new List<GameState>();
-        private ChessGame _gameLib = new ChessGame();
-        private Tuple<BPosition, BPosition> _lastMove;
+        private ChessToolValidate _validator;
+
+        public LocalChessGame( ) {
+            _validator = new ChessToolValidate(new ChessGame());
+        }
+
+        public Action<object> DataReceived { get; set; }
 
         public Action Ended { get; set; }
 
@@ -33,31 +37,15 @@ namespace Game.Games.Chess
             }
         }
 
+        public Action<List<object>> MessagesReceived { get; set; }
+
+        public Action<object> MoveReceived { get; set; }
+
         public object Settings { get; set; }
 
         public bool CanMove( object move )
         {
-            var state = (GameState)move;
-            var pos1 = Converter.ConvertChessPosition(state.LastMove.Item1);
-            var pos2 = Converter.ConvertChessPosition(state.LastMove.Item2);
-            var canMove = _gameLib.GetValidMoves(
-                new Position(pos1)).Contains(
-                new Move(
-                    pos1,
-                    pos2,
-                    _gameLib.WhoseTurn));
-
-            return canMove;
-        }
-
-        public List<object> CheckData( object data )
-        {
-            throw new NotImplementedException();
-        }
-
-        public List<object> CheckMessages( )
-        {
-            throw new NotImplementedException();
+            return _validator.CanMove(move);
         }
 
         public void Close( )
@@ -65,23 +53,14 @@ namespace Game.Games.Chess
             
         }
 
-        public List<object> GetMoves( object inputPosition )
+        public List<object> GetValidMoves( object inputPosition )
         {
-            var pos = (BPosition)inputPosition;
-            return _gameLib.GetValidMoves(new Position(Converter.ConvertChessPosition(pos)))
-                .Select(x => (object)Converter.ConvertChessPosition(x.NewPosition.ToString())).ToList();
+            return _validator.GetMoves(inputPosition);
         }
 
         public async Task<object> MakeMove( object moveData )
         {
-            var state = (GameState)moveData;
-            _gameLib.ApplyMove(new Move(
-                    Converter.ConvertChessPosition(state.LastMove.Item1),
-                    Converter.ConvertChessPosition(state.LastMove.Item2), _gameLib.WhoseTurn), 
-                alreadyValidated: true);
-            return await Task.Run(( ) => {
-                return true;
-            });
+            return await _validator.MakeMove(moveData);
         }
 
         public Task<bool> Open( )
@@ -101,14 +80,7 @@ namespace Game.Games.Chess
 
         public bool QueryCancelMove( )
         {
-            if(_lastMove == null)
-                return false;
-
-            return _gameLib.ApplyMove(new Move(
-                    Converter.ConvertChessPosition(_lastMove.Item1),
-                    Converter.ConvertChessPosition(_lastMove.Item2),
-                    _gameLib.WhoseTurn == Player.Black ? Player.White : Player.Black), 
-                alreadyValidated: true) != MoveType.Invalid;
+            return _validator.QueryCancelMove();
         }
         
 
@@ -117,7 +89,7 @@ namespace Game.Games.Chess
             throw new NotImplementedException();
         }
 
-        public void SendMessage( object data )
+        public Task<bool> SendMessage( object data )
         {
             throw new NotImplementedException();
         }
@@ -125,7 +97,7 @@ namespace Game.Games.Chess
         Task<bool> IGame.Resign( )
         {
             Close();
-            return Task.Run(( ) => { _gameLib.Resign(Player.None); return true; });
+            return Task.Run(( ) => true);
         }
     }
 }
