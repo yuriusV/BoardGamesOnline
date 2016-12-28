@@ -32,6 +32,8 @@ namespace Game.Settings
         public string BoardBackImagePath { get; set; }
         public User UserProfile { get; set; }
         public int BotLevel { get; set; }
+        public bool AllowRemote { get; set; } 
+        public int ListenPort { get; set; }
 
         public Config( ) {
             BoardBackImagePath = string.Empty;

@@ -1,5 +1,7 @@
-﻿using Game.Model.Game.Chess;
+﻿using Game.Database;
+using Game.Model.Game.Chess;
 using Game.Presenters;
+using Game.Settings;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -131,6 +133,13 @@ namespace Game.Views._3D
                     Camera.LookDirection = _cameraFront.Item1;
                 }
             };
+
+            try
+            {
+                var path = ResourceFiles.GetFile(Config.Get().BoardBackImagePath);
+                LayoutRoot.Background = new ImageBrush(new BitmapImage(new Uri(path)));
+            }
+            catch { }
 
             cancelButton.Click += async ( s, e ) => {
                 var cur = await Task<bool>.Run(() => {

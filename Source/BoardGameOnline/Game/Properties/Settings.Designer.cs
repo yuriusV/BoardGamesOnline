@@ -49,7 +49,7 @@ namespace Game.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("System.Data.SQLite;")]
+        [global::System.Configuration.DefaultSettingValueAttribute("System.Data.SQLite")]
         public string DbProvider {
             get {
                 return ((string)(this["DbProvider"]));

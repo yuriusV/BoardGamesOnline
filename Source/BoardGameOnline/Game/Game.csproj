@@ -81,8 +81,10 @@
       <HintPath>..\packages\System.Data.SQLite.Linq.1.0.104.0\lib\net451\System.Data.SQLite.Linq.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Runtime.Caching" />
     <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -97,12 +99,28 @@
     <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Database\ResourceFiles.cs" />
     <Compile Include="Games\Chess\ChessBase.cs" />
+    <Compile Include="Games\Chess\DedicatedChessGame.cs" />
+    <Compile Include="Interfaces\IRemoteSetupView.cs" />
     <Compile Include="Interfaces\ISettingsView.cs" />
+    <Compile Include="Interfaces\IStatisticView.cs" />
+    <Compile Include="Model\Remote\RemoteData.cs" />
+    <Compile Include="Model\View\StatisticView.cs" />
+    <Compile Include="Presenters\NetworkInformationPresenter.cs" />
+    <Compile Include="Presenters\RemoteSetupPresenter.cs" />
     <Compile Include="Presenters\SettingsPresenter.cs" />
+    <Compile Include="Presenters\StatisticPresenter.cs" />
+    <Compile Include="Remote\Server.cs" />
     <Compile Include="Settings\Config.cs" />
+    <Compile Include="Views\Default\RemoteSetupView.xaml.cs">
+      <DependentUpon>RemoteSetupView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\Default\Settings.xaml.cs">
       <DependentUpon>Settings.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Default\StatisticView.xaml.cs">
+      <DependentUpon>StatisticView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Default\WaitIView.xaml.cs">
       <DependentUpon>WaitIView.xaml</DependentUpon>
@@ -130,7 +148,6 @@
     <Compile Include="Presenters\ChessBoardPresenter.cs" />
     <Compile Include="Utils\ChessAI.cs" />
     <Compile Include="Utils\Converter.cs" />
-    <Compile Include="Presenters\GamePresenter.cs" />
     <Compile Include="Presenters\HelpPresenter.cs" />
     <Compile Include="Presenters\MainPresenter.cs" />
     <Compile Include="Presenters\Manager.cs" />
@@ -222,7 +239,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\Default\RemoteSetupView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\Default\Settings.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Default\StatisticView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

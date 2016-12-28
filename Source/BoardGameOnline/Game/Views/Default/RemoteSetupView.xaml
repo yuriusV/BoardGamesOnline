@@ -1,0 +1,48 @@
+﻿<UserControl x:Class="Game.Views.Default.RemoteSetupView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Game.Views.Default"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300">
+    <Grid Margin="30 30 30 30">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="5*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <ListView Grid.Row="0" ItemsSource="{Binding Path=ContactsList}">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock MouseDown="TextBlock_MouseDown" Text="{Binding Path=Name}"/>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+
+            <TextBlock Grid.Column="0">IP подключения:</TextBlock>
+            <TextBox Name="textConnectIP" Grid.Column="1" Text="{Binding Path=ConnectIP}"></TextBox>
+
+            <TextBlock Grid.Column="2">Порт подключения</TextBlock>
+            <TextBox Name="textConnectPort" Grid.Column="3" Text="{Binding Path=ConnectPort}"></TextBox>
+        </Grid>
+        <Grid Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="2*"/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Button Name="buttonStart" Grid.Column="1">Начать</Button>
+            <Button Name="buttonCancel" Grid.Column="3">Отменить</Button>
+        </Grid>
+    </Grid>
+</UserControl>

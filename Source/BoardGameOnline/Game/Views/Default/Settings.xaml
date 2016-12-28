@@ -83,11 +83,34 @@
                             <RowDefinition/>
                         </Grid.RowDefinitions>
                         <TextBlock Grid.Column="0" Grid.Row="0" Margin="5,5,10,5">Сложонсть</TextBlock>
-                        <TextBox Text="{Binding Path=UIData.BotLevel}" Grid.Column="1" Grid.Row="0"/>
+                        <TextBox Name="textLevelEnter" Text="{Binding Path=UIData.BotLevel}" Grid.Column="1" Grid.Row="0"/>
                     </Grid>
                 
                 </StackPanel>
         </md:Card>
+
+            <md:Card Style="{StaticResource CardStyle}">
+                <StackPanel>
+                    <TextBlock FontWeight="Bold">Настройки подключения</TextBlock>
+                    <md:Underline/>
+
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+                    
+                    <CheckBox Grid.Row="0" Grid.ColumnSpan="2"  IsChecked="{Binding Path=UIData.AllowRemote}">Разрешить подключаться</CheckBox>
+                    <TextBlock Grid.Row="1" Grid.Column="0">Порт</TextBlock>
+                    <TextBox Grid.Row="1" Grid.Column="1" Text="{Binding Path=UIData.ListenPort}"></TextBox>
+
+                    </Grid>
+                </StackPanel>
+            </md:Card>
         
     </WrapPanel>
 
@@ -99,8 +122,8 @@
                 <ColumnDefinition Width="2*"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
-            <Button Name="saveButton" Grid.Column="1">Сохранить</Button>
-            <Button Name="cancelButton" Grid.Column="3">Отменить</Button>
+            <Button Name="buttonSave" Grid.Column="1">Сохранить</Button>
+            <Button Name="buttonCancel" Grid.Column="3">Отменить</Button>
         </Grid>
         
     </DockPanel>

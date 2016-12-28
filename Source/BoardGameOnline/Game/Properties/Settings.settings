@@ -9,7 +9,7 @@
       <Value Profile="(Default)">Data Source=Game.db;</Value>
     </Setting>
     <Setting Name="DbProvider" Type="System.String" Scope="User">
-      <Value Profile="(Default)">System.Data.SQLite;</Value>
+      <Value Profile="(Default)">System.Data.SQLite</Value>
     </Setting>
   </Settings>
 </SettingsFile>

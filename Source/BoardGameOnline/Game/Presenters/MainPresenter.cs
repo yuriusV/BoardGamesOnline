@@ -41,10 +41,18 @@ namespace Game.Presenters
                 ["Сам с собой"] = () => StartSingleGame(),
                 ["Удаленно"] = () => StartRemoteGame(),
             });
-            view.RegisterMainMenuItem("Текущая", ( ) => { }, new Dictionary<string, Action> {
-                //["Сделать ход"]
-            });
             view.RegisterMainMenuItem("Настройки", ( ) => StartSettings(), null);
+            view.RegisterMainMenuItem("Детали", ( ) => { }, new Dictionary<string, Action> {
+                ["Статистика"] = StartStatistics,
+                ["Игроки"] = StartGetGamers,
+            });
+            view.RegisterMainMenuItem("Мой IP", ( ) =>
+            {
+                var pres = new NetworkInformationPresenter();
+                pres.Register();
+            });
+
+
             view.HideChat();
             view.OnChatMessage = ChatMessageRecived;
 
@@ -56,9 +64,20 @@ namespace Game.Presenters
             };
         }
 
+        private void StartGetGamers( ) {
+
+        }
+
+        private void StartStatistics( )
+        {
+            var statPres = new StatisticPresenter();
+            statPres.Register();    
+        }
+
         private void StartRemoteGame( )
         {
-            
+            var pres = new RemoteSetupPresenter();
+            pres.Register();
         }
 
         private void StartSettings( ) {
@@ -100,7 +119,7 @@ namespace Game.Presenters
         }
         
         public void ReleaseControl( ) {
-            _mainView.SetupView(new MainScreen());
+            _mainView.SetupView(null);
         }
 
         public void ShowQuestion( string question, Action<bool> answered ) {

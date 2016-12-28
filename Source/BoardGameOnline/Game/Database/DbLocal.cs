@@ -15,13 +15,30 @@ using System.Xml.Serialization;
 namespace Game.Database
 {
 
-    public static class Seri {
+    public static class Serializer {
         public static void Save( object item, string path ) {
            
             using(var sw = new StreamWriter(path)) {
                 var seri = new XmlSerializer(item.GetType());
                 seri.Serialize(sw, item);
+                
             }
+        }
+        
+        public static string SaveString( object item ) {
+            var sb = new StringBuilder();
+            using(var sw = new StringWriter(sb))
+            {
+                var seri = new XmlSerializer(item.GetType());
+                seri.Serialize(sw, item);
+
+            }
+            return sb.ToString();
+        }
+        
+        public static T LoadFromStream<T>( Stream stream ) {
+            var seri = new XmlSerializer(typeof(T));
+            return (T)seri.Deserialize(stream);
         }
 
         public static T Load<T>( string path ) {
@@ -53,7 +70,7 @@ namespace Game.Database
 
         public static async Task<bool> SetupLocalUser( User user ) {
             return await Task.Run(( ) => {
-                Seri.Save(user, "user.xml");
+                Serializer.Save(user, "user.xml");
                 return true;
             });
         }
@@ -73,7 +90,7 @@ namespace Game.Database
 
         public static async Task<User> GetCurrentUser( ) {
             return await Task.Run(( ) => {
-                return Seri.Load<User>("user.xml");
+                return Serializer.Load<User>("user.xml");
             });
         }
 
@@ -81,6 +98,13 @@ namespace Game.Database
             await Task.Run(( ) => {
                 result.Uid = Guid.NewGuid().ToString();
                 _db.InsertAsync<ChessGameResult>(result);
+            });
+        }
+
+        public static async Task<IEnumerable<ChessGameResult>> FetchChessResults( )
+        {
+            return await Task.Run(( ) => {
+                return _db.Fetch<ChessGameResult>();
             });
         }
     }

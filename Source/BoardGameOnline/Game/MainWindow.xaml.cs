@@ -16,6 +16,7 @@ using System.Windows.Shapes;
 using Game.Interfaces;
 using Game.Presenters;
 using Game.Model.View;
+using Game.Views.Default;
 
 namespace Game
 {
@@ -78,9 +79,14 @@ namespace Game
 
         public void SetupView( UserControl control )
         {
-            Field.Children.Clear();
-            if(control != null)
-                Field.Children.Add(control);
+            this.Dispatcher.Invoke(( ) =>
+            {
+                Field.Children.Clear();
+                if(control != null)
+                    Field.Children.Add(control);
+                else
+                    Field.Children.Add(new MainScreen());
+            });
 
         }
 

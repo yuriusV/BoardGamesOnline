@@ -5,6 +5,8 @@ using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
+using Game.Remote;
+using Game.Settings;
 
 namespace Game
 {
@@ -15,6 +17,12 @@ namespace Game
     {
         [STAThread]
         public static void Main( string[] args ) {
+            
+            Task.Run(( ) =>
+            {
+                if(Config.Get().AllowRemote)
+                    RemoteManager.StartServer();
+            });
             var app = new App();
             app.InitializeComponent();
             app.Run();

@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Game.Model.View;
 
-namespace Game.Presenters
+namespace Game.Interfaces
 {
-    public class GamePresenter
+    public interface IStatisticView
     {
-
+        void Start( StatisticViewData data);
     }
 }
+   

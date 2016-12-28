@@ -8,7 +8,7 @@ using NPoco;
 
 namespace Game.Model.User
 {
-    [TableName("user")]
+    [TableName("users")]
     [PrimaryKey("id")]
     public class User
     {
@@ -32,5 +32,8 @@ namespace Game.Model.User
 
         [Column("password")]
         public string Password { get; set; }
+
+        [Column("address")]
+        public string Address { get; set; }
     }
 }

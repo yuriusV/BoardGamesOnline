@@ -17,7 +17,9 @@ namespace Game.Presenters
         private static Type HelpType = typeof(IHelp);
         private static Type ChessBoardType = typeof(IChessBoardView);
         private static Type SettingsType = typeof(ISettingsView);
-        
+        private static Type StatisticType = typeof(IStatisticView);
+        private static Type RemoteSetupType = typeof(IRemoteSetupView);
+
         public static object ResolveView(Type type) {
 
             if(type == HelpType)
@@ -26,6 +28,11 @@ namespace Game.Presenters
                 return GetChessBoardView();
             else if(type == SettingsType)
                 return GetSettingsView();
+            else if(type == StatisticType)
+                return ResolveStatistic();
+            else if(type == RemoteSetupType)
+                return GetRemoteSetupView();
+
 
             return null;
         }
@@ -33,8 +40,16 @@ namespace Game.Presenters
             return new Views.Default.Settings();
         }
 
+        private static object GetRemoteSetupView( ) {
+            return new RemoteSetupView();
+        }
+
         private static object GetHelpView( ) {
             return new Help();
+        }
+
+        private static object ResolveStatistic( ) {
+            return new StatisticView();
         }
 
         private static object GetChessBoardView( ) {

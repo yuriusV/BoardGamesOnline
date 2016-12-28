@@ -53,7 +53,6 @@ namespace Game.Utils
                 }
                 return max.Moves[max.Moves.Count - _current.MinLevel];
             });
-
         }
 
         public bool GetMove(GameState state,  int level ) {
@@ -70,7 +69,6 @@ namespace Game.Utils
                                                     Converter.ConvertChessPosition(x.OriginalPosition.ToString()), 
                                                     Converter.ConvertChessPosition(x.NewPosition.ToString()))).ToList();
 
-            var next = new List<GameState>();
             bool needEx = false;
             foreach(var variant in owner) {
                 if(GetMove(variant, level + 1))
