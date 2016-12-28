@@ -118,21 +118,21 @@ namespace Game.Views._3D
             _cameraFront = new Tuple<Vector3D, Point3D>(Camera.LookDirection, Camera.Position);
             _cameraSide = new Tuple<Vector3D, Point3D>(new Vector3D(20.066, 0, -5.976), new Point3D(-17.066, 0, 20.976));
 
-            viewMover.Click += ( s, e ) =>
-            {
-                viewMover.Content = _watchAtSide ? "Вид сбоку" : "Вид сзади";
-                _watchAtSide = !_watchAtSide;
-                if(_watchAtSide)
-                {
-                    Camera.Position = _cameraSide.Item2;
-                    Camera.LookDirection = _cameraSide.Item1;
-                }
-                else
-                {
-                    Camera.Position = _cameraFront.Item2;
-                    Camera.LookDirection = _cameraFront.Item1;
-                }
-            };
+            //viewMover.Click += ( s, e ) =>
+            //{
+            //    viewMover.Content = _watchAtSide ? "Вид сбоку" : "Вид сзади";
+            //    _watchAtSide = !_watchAtSide;
+            //    if(_watchAtSide)
+            //    {
+            //        Camera.Position = _cameraSide.Item2;
+            //        Camera.LookDirection = _cameraSide.Item1;
+            //    }
+            //    else
+            //    {
+            //        Camera.Position = _cameraFront.Item2;
+            //        Camera.LookDirection = _cameraFront.Item1;
+            //    }
+            //};
 
             try
             {
@@ -610,10 +610,10 @@ namespace Game.Views._3D
         {
             _settings = settings;
 
-            if(_settings.SecondLimited < 1)
-            {
-                timer.Visibility = Visibility.Hidden;
-            }
+            //if(_settings.SecondLimited < 1)
+            //{
+            //    timer.Visibility = Visibility.Hidden;
+            //}
 
             GameReady?.Invoke();
         }
@@ -652,9 +652,9 @@ namespace Game.Views._3D
 
         private void SignalTime( )
         {
-            SetText("Вы потратили слишком много времени.");
-            timer.Background = Brushes.Red;
-            GameLose();    
+            //SetText("Вы потратили слишком много времени.");
+            //timer.Background = Brushes.Red;
+            //GameLose();    
         }
 
         public void SetText( string text )

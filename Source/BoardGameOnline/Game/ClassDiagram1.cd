@@ -1,0 +1,600 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Game.App" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="8" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAA=</HashCode>
+      <FileName>App.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Game.MainWindow" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="4.75" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAggAAAEEAAAAIQgAAAAAAAAIIEAoAAAiAAAQgA=</HashCode>
+      <FileName>MainWindow.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Game.Database.Serializer" Collapsed="true">
+    <Position X="6.5" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAgIAAAAAAAAgAAAAAAAAAAAAQAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Database\DbLocal.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Game.Database.DbLocal" Collapsed="true">
+    <Position X="2.75" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AACAgACAAAIAAiCAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Database\DbLocal.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Game.Database.ResourceFiles" Collapsed="true">
+    <Position X="16" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAMAAAAAAA=</HashCode>
+      <FileName>Database\ResourceFiles.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Game.Games.Chess.ChessToolValidate" Collapsed="true">
+    <Position X="8.25" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAACAAAAAAAAAAAAQAAAAAACAEAgAAAAAAAAAAAAA=</HashCode>
+      <FileName>Games\Chess\ChessBase.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Game.Games.Chess.ChessGameWithPC" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="8.25" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAhAKAAAIAAYAEAACgAAAABAAEOAgAAgAAAAACAIAA=</HashCode>
+      <FileName>Games\Chess\ChessGameWithPC.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Game.Games.Chess.DedicatedChessGame" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="24.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAhAKAAAKAAIAEAACgAAAABAAAOAgAAgAAAAACAJAA=</HashCode>
+      <FileName>Games\Chess\DedicatedChessGame.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Game.Games.Chess.LocalChessGame" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="8" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQApEKAAAIAAIAEIACgAAAABAAAMAgAAgAAAAACAIAA=</HashCode>
+      <FileName>Games\Chess\LocalChessGame.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Game.Games.GameFactory" Collapsed="true">
+    <Position X="8" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Games\GameFactory.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Game.Model.Game.Chess.Cell" Collapsed="true">
+    <Position X="22.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAABAAAAAAAAAAgAAAAAAAAAAAAA=</HashCode>
+      <FileName>Model\Game\Chess\Cell.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Game.Model.Game.Chess.ChessGameResult" Collapsed="true">
+    <Position X="20.5" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAQAAAABAAAABKAAAAAAAAAAAQgAAAAAAAAAgA=</HashCode>
+      <FileName>Model\Game\Chess\ChessGameResult.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Game.Model.Game.Chess.ChessSettings" Collapsed="true">
+    <Position X="6" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAQAAAAAAAAAAAAAAAEAAAAAAAAAAAAQCAAAAAAAA=</HashCode>
+      <FileName>Model\Game\Chess\ChessSettings.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Game.Model.Game.Chess.BPosition" Collapsed="true">
+    <Position X="1" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAABAAAAAAAAAAgAAAAAAAAAAAAA=</HashCode>
+      <FileName>Model\Game\Chess\GameState.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Game.Model.Game.Chess.GameState" Collapsed="true">
+    <Position X="1" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAgAAAAAAAAAAEAAAAAAAQAAAIAAEAAAAAAAAAAgAA=</HashCode>
+      <FileName>Model\Game\Chess\GameState.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Game.Model.Remote.RemoteData" Collapsed="true">
+    <Position X="23.25" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAIAAAAAAAAAAgAAAAAAAAAAAAAgABAAIAAA=</HashCode>
+      <FileName>Model\Remote\RemoteData.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Game.Model.Remote.UserData" Collapsed="true">
+    <Position X="26.5" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAEAAAAAAAAAAAAAAQAAAAAAAAAAAAEAAAAAAA=</HashCode>
+      <FileName>Model\Remote\RemoteData.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Game.Model.User.User" Collapsed="true">
+    <Position X="6.25" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAEAAAAAAAAABAAAAQAAAAAAAQCAAAQAAAAAAA=</HashCode>
+      <FileName>Model\User\User.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Game.Model.User.UserGames" Collapsed="true">
+    <Position X="14.25" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAECAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Model\User\UserGames.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Game.Model.View.ChatMessage" Collapsed="true">
+    <Position X="21.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAEAAACAAAAAA=</HashCode>
+      <FileName>Model\View\ChatMessage.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Game.Model.View.ChatTitle" Collapsed="true">
+    <Position X="24.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAACAAAAAA=</HashCode>
+      <FileName>Model\View\ChatTitle.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Game.Model.View.StatisticViewData" Collapsed="true">
+    <Position X="23" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAIAAAAACAAAAEAAAAAAAAAAAAAAIAAAAAAABA=</HashCode>
+      <FileName>Model\View\StatisticView.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Game.Modules.Loader" Collapsed="true">
+    <Position X="26.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAA=</HashCode>
+      <FileName>Modules\Loader.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Game.Presenters.ChessBoardPresenter" Collapsed="true">
+    <Position X="19.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAgiACkAAAAAAAAAABAAAAAAgCAAACAAU=</HashCode>
+      <FileName>Presenters\ChessBoardPresenter.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Game.Presenters.HelpPresenter" Collapsed="true">
+    <Position X="16" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Presenters\HelpPresenter.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Game.Presenters.MainPresenter" Collapsed="true">
+    <Position X="20.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAIEAACgAAAkAABADIQAAAIAAIUAMAEAAAAQAAEAAAA=</HashCode>
+      <FileName>Presenters\MainPresenter.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Game.Presenters.ViewPresenterManager" Collapsed="true">
+    <Position X="17.75" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gAAkAAAAAACAAAAAAAAAABQAAAAAEAgAAIAAIAAgAAA=</HashCode>
+      <FileName>Presenters\Manager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Game.Presenters.NetworkInformationPresenter" Collapsed="true">
+    <Position X="17.75" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Presenters\NetworkInformationPresenter.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Game.Presenters.RemoteSetupPresenter" Collapsed="true">
+    <Position X="26.5" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAACACAAAAAAA=</HashCode>
+      <FileName>Presenters\RemoteSetupPresenter.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Game.Presenters.SettingsPresenter" Collapsed="true">
+    <Position X="16" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAACACAAAAAAA=</HashCode>
+      <FileName>Presenters\SettingsPresenter.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Game.Presenters.StatisticPresenter" Collapsed="true">
+    <Position X="17.75" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAACACAAAAAAA=</HashCode>
+      <FileName>Presenters\StatisticPresenter.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Game.Properties.Resources" Collapsed="true">
+    <Position X="17.75" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAABEAAAAQAAAAAAAAAAAAAAAIA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Game.Properties.Settings" Collapsed="true">
+    <Position X="24.75" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAACAAAAAAAAAAAAAAIAAAABABAAAAAAAAAABAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Game.Remote.RemoteManager" Collapsed="true">
+    <Position X="24.75" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgQAAAAAAIAAAAAgYAAAAAAAQCAEAAAAAAAAAAABAAA=</HashCode>
+      <FileName>Remote\Manager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Game.Remote.Connection" Collapsed="true">
+    <Position X="23" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAQAAAAAAAAAAACAAAAAACAAAAAAAAAAg=</HashCode>
+      <FileName>Remote\Manager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Game.Remote.Server" Collapsed="true">
+    <Position X="23" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAgAAAAAgCACEBwAAAAAAAAAAAAAIAAAIAAAAAAAAAA=</HashCode>
+      <FileName>Remote\Server.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Game.Settings.Config" Collapsed="true">
+    <Position X="6" Y="1.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAEAAAAAAEABABAAAAAAAAAgQQIACAAABAACAQAAAA=</HashCode>
+      <FileName>Settings\Config.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Game.Settings.User" Collapsed="true">
+    <Position X="24.75" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAEAAAAAAAAAAAAAIQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Settings\Config.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Game.Settings.SettingsManager" Collapsed="true">
+    <Position X="3" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAgIAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAA=</HashCode>
+      <FileName>Settings\SettingsManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Game.Utils.ChessAI" Collapsed="true">
+    <Position X="6.5" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAQAICAQAAAIAAAAAAAgEEAAAAAAAAAAFAAAAAA=</HashCode>
+      <FileName>Utils\ChessAI.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Game.Utils.ChessBot" Collapsed="true">
+    <Position X="21.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Utils\ChessBot.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Game.Utils.Converter" Collapsed="true">
+    <Position X="6.25" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AACAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Utils\Converter.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Game.Utils.ChessMoveChecker" Collapsed="true">
+    <Position X="26.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Utils\MoveChecker.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Game.Views._3D.Bishop" Collapsed="true">
+    <Position X="4.5" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Views\3D\Bishop.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Game.Views._3D.Bishop_Mesh" Collapsed="true">
+    <Position X="18" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAEAAAAAAgAAABMAAAAQAAAAAABAAAAAAAAIA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Game.Views._3D.ChessBoard" Collapsed="true">
+    <Position X="4" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AEAAAAAAAAAAAAAAAAAAAAAAAAABAAAEAQAAAABAAAA=</HashCode>
+      <FileName>Views\3D\ChessBoard.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Game.Views._3D.ChessBoard_Mesh" Collapsed="true">
+    <Position X="19.5" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAgAAABMAAAAQAAAAAABAAAAAAAAIA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Game.Views._3D.ChessPiece" Collapsed="true">
+    <Position X="1.75" Y="0.5" Width="1.5" />
+    <NestedTypes>
+      <Enum Name="Game.Views._3D.ChessPiece.SideEnum" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Views\3D\ChessPiece.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+      <Delegate Name="Game.Views._3D.ChessPiece.PieceCoordChangeEvtHandler" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Views\3D\ChessPiece.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Delegate>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AAACAgSAAkAAgAAAAIAgAgCAMAEBABAAAQBABIAAQEQ=</HashCode>
+      <FileName>Views\3D\ChessPiece.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Game.Views._3D.King" Collapsed="true">
+    <Position X="1" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Views\3D\King.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Game.Views._3D.King_Mesh" Collapsed="true">
+    <Position X="14" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAEAAAAAAgAAABMAAAAQAAAAAABAAAAAAAAIA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Game.Views._3D.Knight" Collapsed="true">
+    <Position X="2.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Views\3D\Knight.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Game.Views._3D.Knight_Mesh" Collapsed="true">
+    <Position X="16.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAEAAAAAAgAAABMAAAAQAAAAAABAAAAAAAAIA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Game.Views._3D.Pawn" Collapsed="true">
+    <Position X="4.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Views\3D\Pawn.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Game.Views._3D.Pawn_Mesh" Collapsed="true">
+    <Position X="19.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAEAAAAAAgAAABMAAAAQAAAAAABAAAAAAAAIA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Game.Views._3D.Queen" Collapsed="true">
+    <Position X="1" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Views\3D\Queen.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Game.Views._3D.Queen_Mesh" Collapsed="true">
+    <Position X="17.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAEAAAAAAgAAABMAAAAQAAAAAABAAAAAAAAIA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Game.Views._3D.Rook" Collapsed="true">
+    <Position X="2.75" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Views\3D\Rook.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Game.Views._3D.Rook_Mesh" Collapsed="true">
+    <Position X="20" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAEAAAAAAgAAABMAAAAQAAAAAABAAAAAAAAIA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Game.Views._3D.View3D" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="16" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gAAgagRIEDIqNQQBo4IBCBFAIIBIKCBQHAhQAAAAICI=</HashCode>
+      <FileName>Views\3D\View3D.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="UI.ChessBoard_Mesh" Collapsed="true">
+    <Position X="19.5" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAgAAABMAAAAQAAAAAABAAAAAAAAIA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Game.Views.Default.ChessBoard" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="26.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gAIgAABACCIgJgAQtMIACAEEAABAAACAAABQBAAAECg=</HashCode>
+      <FileName>Views\Default\ChessBoard.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Game.Views.Default.Help" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="8" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Views\Default\Help.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Game.Views.Default.MainScreen" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="4.75" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Views\Default\MainScreen.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Game.Views.Default.RemoteSetupView" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="14.5" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BAAABAAAQCAAQAAAAAAAAAAgAQQAAAAAQAAQCAAAAAA=</HashCode>
+      <FileName>Views\Default\RemoteSetupView.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Game.Views.Default.Settings" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="19.5" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAIAAQCCAAAAAAAAAAAAAAAAAIBAAQAAAAAAAgAA=</HashCode>
+      <FileName>Views\Default\Settings.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Game.Views.Default.StatisticView" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="24.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAAAAAAAAAAAAAAAAAABAAAAAAAAAgAAA=</HashCode>
+      <FileName>Views\Default\StatisticView.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Game.Views.Default.WaitIView" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="19.5" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Views\Default\WaitIView.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Interface Name="Game.Games.IGame" Collapsed="true">
+    <Position X="17.75" Y="8.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAhAKAAAIAAIAEAACgAAAABAAAOAgAAgAAAAACAAAA=</HashCode>
+      <FileName>Games\IGame.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Game.Interfaces.IChessBoardView" Collapsed="true">
+    <Position X="14.25" Y="8.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gAAgAABAACIAJAAAAIIAAAEAAABAAAAAAABQAAAAACA=</HashCode>
+      <FileName>Interfaces\IChessBoard.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Game.Interfaces.IHelp" Collapsed="true">
+    <Position X="21.25" Y="8.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Interfaces\IHelp.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Game.Interfaces.IMainView" Collapsed="true">
+    <Position X="23" Y="8.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAggAAAEEAAAAIQgAAAAAAAAIIEAoAAAiAAAQgA=</HashCode>
+      <FileName>Interfaces\IMainView.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Game.Interfaces.IRemoteSetupView" Collapsed="true">
+    <Position X="24.75" Y="8.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BAAAAAAAQCAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Interfaces\IRemoteSetupView.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Game.Interfaces.ISettingsView" Collapsed="true">
+    <Position X="26.5" Y="8.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAIAAQCAAAAAAAAAAAAAAAAAAABAAQAAAAAAAAAA=</HashCode>
+      <FileName>Interfaces\ISettingsView.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Game.Interfaces.IStatisticView" Collapsed="true">
+    <Position X="14.25" Y="9.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Interfaces\IStatisticView.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Game.Modules.IExtension" Collapsed="true">
+    <Position X="16" Y="8.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Modules\IExtension.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Game.Modules.IGameExtension" Collapsed="true">
+    <Position X="19.5" Y="8.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Modules\IGameExtension.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Enum Name="Game.Model.Game.Chess.GameWinner" Collapsed="true">
+    <Position X="23" Y="10.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAgAAwAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Model\Game\Chess\ChessGameResult.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="Game.Model.Game.Chess.WinType" Collapsed="true">
+    <Position X="24.75" Y="10.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAIAAAA=</HashCode>
+      <FileName>Model\Game\Chess\ChessGameResult.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="Game.Model.Game.Chess.GameType" Collapsed="true">
+    <Position X="21.25" Y="10.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAQAAAAAAAAAACAAAAAAAAAAAAAAAAAAAg=</HashCode>
+      <FileName>Model\Game\Chess\ChessSettings.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="Game.Model.Game.Chess.Figure" Collapsed="true">
+    <Position X="17.75" Y="10.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gBAAAAACAAAEAAgAAAAAQAAQgAAAQgAAAAAAAAEAAGA=</HashCode>
+      <FileName>Model\Game\Chess\GameState.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="Game.Model.Remote.GameStateQuery" Collapsed="true">
+    <Position X="19.5" Y="10.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ACAgAAAAAKAAAAAAAAAAAAAAAAACAAAAAAAAIAAAAAA=</HashCode>
+      <FileName>Model\Remote\RemoteData.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="Game.Settings.ChessGameBoard" Collapsed="true">
+    <Position X="14.25" Y="10.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAIAAAAAAAA=</HashCode>
+      <FileName>Settings\Config.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="Game.Utils.ChessMoveState" Collapsed="true">
+    <Position X="16" Y="10.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAwAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAIAAAA=</HashCode>
+      <FileName>Utils\MoveChecker.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
